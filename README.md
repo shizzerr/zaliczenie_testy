@@ -9,6 +9,8 @@ Projekt został wykonany jako zadanie z przedmiotu "Serwery baz danych".
 
 Jako cel testów została wybrana strona [Demoqa - automation practice form](https://demoqa.com/automation-practice-form/), która została polecona jako dobry cel do przeprowadzenia testów czym się zasugerowałem.
 
+*Język:* **C#**
+
 ## Technologie
 
 | Technologia | Wersja |
