@@ -1,24 +1,17 @@
 ﻿using NUnit.Framework;
+using NUnit.Framework.Internal;
 using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace zaliczenie_testy
 {
     class Program
     {
-        //IWebDriver driver = new ChromeDriver();
         PageObj page;
 
-        static void Main(string[] args)
-        {
-
-        }
-
         [SetUp]
+
         [Obsolete]
         public void Initialize()
         {
@@ -26,34 +19,53 @@ namespace zaliczenie_testy
             PropCol.Driver.Navigate().GoToUrl("https://demoqa.com/automation-practice-form/");
             page = new PageObj();
         }
-
+        [Test]
+        public void Test1_GetFirstText()
+        {
+            SelGetMet.GetText("demo-frame", ElementType.@class);
+            Console.WriteLine(SelGetMet.GetText("demo-frame", ElementType.@class));
+        }
+        [Test]
+        public void Test2_PartialLink_Click()
+        {
+            SelGetMet.PartialLink("Partial Link Test", ElementType.partiallinktext);
+        }
+        [Test]
+        public void Test3_LinkTest()
+        {
+            SelGetMet.Link("Link Test", ElementType.linktext);
+        }
         [Test]
         [Obsolete]
-        public void FillNameAndLastname_Janek_Jankowski()
+        public void Test4_FillNameAndLastname_Janek_Jankowski()
         {
-            //page.FillForm("koronawirus");
             page.PersonData("Janek", "Jankowski");
-            //Console.WriteLine("Tytuł to: " + SeleniumGetMethods.GetTextFromDDL("TitleId", ElementType.Id));
-
-            //SeleniumSetMethods.EnterText("Initial", "koronawirus", ElementType.Name);
-
-            //Console.WriteLine("Initial to: " + SeleniumGetMethods.GetText("Initial", ElementType.Name));
-
-            //SeleniumSetMethods.Click("Save", ElementType.Name);
         }
-
         [Test]
-        public void SelectContinet_Europe()
+        public void Test5_Click_SimpleButton()
+        {
+            SelSetMet.Click_SimpleButton("buttonwithclass", ElementType.id);
+        }
+        [Test]
+        public void Test6_ClickRadio_Sex()
+        {
+            SelSetMet.ClickRadio_Sex("sex-1", ElementType.id);
+        }
+        [Test]
+        public void Test7_InputDate()
+        {
+            page.InputDate("14 Maja 2020");
+        }
+        [Test]
+        public void Test8_MultiPick()
+        {
+            SelSetMet.MultiplePicker("tool-0", "tool-1", ElementType.id);
+        }
+        [Test]
+        public void Test9_SelectContinet_Europe()
         {
             SelSetMet.SelectDropDown("continents", "Europe", ElementType.id);
         }
-
-        [Test]
-        public void GetFirstText()
-        {
-            SelGetMet.GetText("demo-frame", ElementType.@class);
-        }
-
 
         [TearDown]
         public void CleanUp()
@@ -61,5 +73,8 @@ namespace zaliczenie_testy
             PropCol.Driver.Dispose();
         }
 
+        static void Main(string[] args)
+        {
+        }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace zaliczenie_testy
 {
@@ -12,21 +7,31 @@ namespace zaliczenie_testy
     {
 
 
-        internal static void EnterText(string element, string value, ElementType elementType)
+        internal static void MultiplePicker(string element, string element2, ElementType elementType)
         {
             if (elementType == ElementType.id)
-                PropCol.Driver.FindElement(By.Id(element)).SendKeys(value);
-            if (elementType == ElementType.name)
-                PropCol.Driver.FindElement(By.Name(element)).SendKeys(value);
+                PropCol.Driver.FindElement(By.Id(element)).Click();
+            if (elementType == ElementType.id)
+                PropCol.Driver.FindElement(By.Id(element2)).Click();
         }
 
-        public static void Click(string element, ElementType elementType)
+        internal static void ClickRadio_Sex(string element, ElementType elementType)
+        {
+            if (elementType == ElementType.id)
+                PropCol.Driver.FindElement(By.Id(element)).Click();
+        }
+
+
+        public static void Click_SimpleButton(string element, ElementType elementType)
         {
             if (elementType == ElementType.id)
                 PropCol.Driver.FindElement(By.Id(element)).Click();
             if (elementType == ElementType.@class)
+                PropCol.Driver.FindElement(By.ClassName(element)).Click();
+            if (elementType == ElementType.name)
                 PropCol.Driver.FindElement(By.Name(element)).Click();
         }
+
         public static void SelectDropDown(string element, string value, ElementType elementType)
         {
             if (elementType == ElementType.id)
